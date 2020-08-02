@@ -3,29 +3,14 @@ import Menu from './MenuComponent';
 import { DISHES } from '../shared/dishes'
 import DishDetail from './DishdetailComponent';
 import { View, Platform } from 'react-native';
-import { createStackNavigator } from 'react-navigation-stack';
+import { NavigationContainer, Screen } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 
 
-const MenuNavigator = createStackNavigator({
-    Menu: { screen: Menu },
-    DishDetail: { screen: DishDetail }
-},
-{
-    initialRouteName: 'Menu',
-    navigationOptions: {
-        headerStyle: {
-            backgroundColor: "#512DA8"
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-            color: "#fff"            
-        }
-    }
-}
-);
+const MenuNavigator = createStackNavigator();
 
- class Main extends React.Component {
+class Main extends React.Component {
 
     constructor(props) {
         super(props);
@@ -37,9 +22,13 @@ const MenuNavigator = createStackNavigator({
 
     render() {
         return (
-            <View style={{ flex: 1, paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight }}>
-                <MenuNavigator />
-            </View>
+                <NavigationContainer>
+                    <MenuNavigator.Navigator >
+                        <MenuNavigator.Screen name="Menu" component={Menu} />
+                        <MenuNavigator.Screen name="DishDetail" component={DishDetail} />
+                    </MenuNavigator.Navigator>
+                    
+                </NavigationContainer>
         );
     };
 }
