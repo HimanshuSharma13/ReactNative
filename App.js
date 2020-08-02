@@ -12,7 +12,7 @@ import Main from './components/MainComponent';
 //   );
 // }
 
-export default class MComponent extends React.Component{
+ class MComponent extends React.Component{
   render(){
     return (
       <Main/>
@@ -20,5 +20,7 @@ export default class MComponent extends React.Component{
    
   };
 }
+
+export default MComponent;
 
 
