@@ -1,1 +1,0 @@
-export const baseUrl="http://I.P:3001";
