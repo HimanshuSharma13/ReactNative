@@ -1,19 +1,42 @@
 import React, { Component } from 'react';
 import Menu from './MenuComponent';
 import DishDetail from './DishdetailComponent';
-import { View, Platform, Image, StyleSheet } from 'react-native';
+import { View, Platform, Image, StyleSheet, ScrollView, Text } from 'react-native';
 import { NavigationContainer, Screen } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createDrawerNavigator, DrawerItem } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerItems, DrawerItemList } from '@react-navigation/drawer';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Home from './HomeComponent';
 // import { Icon } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
+// import {  Header } from 'react-navigation';
 
 
+
+const CustomDrawerContentComponent = (props) => (
+    <ScrollView>
+        <SafeAreaView style={styles.container}
+            forceInset={{ top: 'always', horizontal: 'never' }}>
+            <View style={styles.drawerHeader}>
+                <View style={{ flex: 1 }}>
+                    <Image source={require('./images/logo.png')}
+                        style={styles.drawerImage} />
+                </View>
+                <View style={{ flex: 2 }}>
+                    <Text style={styles.drawerHeaderText}>Resteronto Confusion</Text>
+                </View>
+            </View>
+            <DrawerItemList {...props} />
+
+        </SafeAreaView>
+    </ScrollView>
+);
 
 const MenuNavigator = createStackNavigator();
 const HomeNavigator = createStackNavigator();
 const Drawer = createDrawerNavigator();
+
+
 
 class MainNavigator extends React.Component {
     render() {
@@ -102,16 +125,21 @@ class Main extends React.Component {
 
 
                 <Drawer.Navigator initialRouteName="Home"
+                    drawerContent={props => <CustomDrawerContentComponent {...props} />}
+
+
                     drawerStyle={{
                         backgroundColor: '#fefefe',
                         width: 240,
                     }}>
+
+
                     <Drawer.Screen name="Homes" component={HomeStackNavigator}
-                    
+
                         options={
                             {
-                                drawerIcon: ({tintColor}) => <Icon size={24} name='md-home' type='font-awesome' color={tintColor}></Icon>,
-                                drawerLabel:"HoMeS"
+                                drawerIcon: ({ tintColor }) => <Icon size={24} name='md-home' type='font-awesome' color={tintColor}></Icon>,
+                                drawerLabel: "HoMeS"
 
                             }
                         }
@@ -119,17 +147,17 @@ class Main extends React.Component {
 
 
 
-                    <Drawer.Screen name="Menu" component={MainNavigator} 
-                    options={
-                        {
-                            drawerIcon: ({tintColor}) => <Icon size={23} name='md-menu' type="font-awesome" color={tintColor}></Icon>
+                    <Drawer.Screen name="Menu" component={MainNavigator}
+                        options={
+                            {
+                                drawerIcon: ({ tintColor }) => <Icon size={23} name='md-menu' type="font-awesome" color={tintColor}></Icon>
+                            }
                         }
-                    }
                     />
                     <Drawer.Screen name="Contact Us" component={MainNavigator}
                         options={
                             {
-                                drawerIcon: ({tintColor}) => <Icon size={23} name='md-contacts' type="font-awesome" color={tintColor}></Icon>
+                                drawerIcon: ({ tintColor }) => <Icon size={23} name='md-contacts' type="font-awesome" color={tintColor}></Icon>
                             }
                         }
                     />
@@ -143,6 +171,28 @@ class Main extends React.Component {
         );
     };
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    },
+    drawerHeader: {
+        flex: 1,
+        backgroundColor: "#3f51b5",
+        height: 140,
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "row"
+
+    },
+    drawerImage: {
+        margin: 10,
+        width: 80,
+        height: 60
+
+    }
+
+});
 
 export default Main;
 

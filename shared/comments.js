@@ -130,7 +130,7 @@ export const COMMENTS =
     },
     {
         id: 16,
-        dishId: 3,
+        dishId: 0,
         rating: 4,
         comment: "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
         author: "Paul McVites",
@@ -138,7 +138,7 @@ export const COMMENTS =
     },
     {
         id: 17,
-        dishId: 3,
+        dishId: 0,
         rating: 3,
         comment: "Eat it, just eat it!",
         author: "Michael Jaikishan",
@@ -146,7 +146,7 @@ export const COMMENTS =
     },
     {
         id: 18,
-        dishId: 3,
+        dishId: 0,
         rating: 4,
         comment: "Ultimate, Reaching for the stars!",
         author: "Ringo Starry",
@@ -154,7 +154,7 @@ export const COMMENTS =
     },
     {
         id: 19,
-        dishId: 3,
+        dishId: 0,
         rating: 2,
         comment: "It's your birthday, we're gonna party!",
         author: "25 Cent",
