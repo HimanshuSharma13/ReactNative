@@ -1,6 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import Main from './components/MainComponent';
+import {Provider} from 'react-redux';
+import {ConfigureStore} from './redux/configureStore';
+import {connect} from 'react-redux';
+import { dishes } from './redux/dishes';
+
+const store=ConfigureStore();
+
+
 
 
 // export default function App() {
@@ -15,7 +23,10 @@ import Main from './components/MainComponent';
  class MComponent extends React.Component{
   render(){
     return (
+      <Provider store={store}>
       <Main/>
+      </Provider>
+    
     );
    
   };

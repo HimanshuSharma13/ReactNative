@@ -9,7 +9,22 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Home from './HomeComponent';
 // import { Icon } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
-// import {  Header } from 'react-navigation';
+import {  fetchDishes } from '../redux/ActionCreator';
+import {connect} from 'react-redux';
+
+
+
+const mapStateToProps= state=>{
+    return{
+        dishes: state.dishes
+    }
+};
+
+const mapDispatchToProps = dispatch=>(
+    {
+        fetchDishes:()=> dispatch(fetchDishes())
+    }
+);
 
 
 
@@ -117,7 +132,9 @@ class HomeStackNavigator extends React.Component {
 
 class Main extends React.Component {
 
-
+componentDidMount(){
+    this.props.fetchDishes();
+};
 
     render() {
         return (
@@ -194,5 +211,5 @@ const styles = StyleSheet.create({
 
 });
 
-export default Main;
+export default connect(mapStateToProps,mapDispatchToProps)(Main);
 

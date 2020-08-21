@@ -1,0 +1,11 @@
+export const DISHES_LOADING="dishes_loading";
+export const ADD_DISHES="add_dishes";
+export const DISHES_FAILED="dishes_failed";
+export const ADD_COMMENTS="add_comments";
+export const COMMENTS_FAILED="comments_failed";
+export const PROMOS_LOADING="promos_loading";
+export const ADD_PROMOS="add_promos";
+export const PROMOS_FAILED="promos_failed";
+export const LEADERS_LOADING="leaders_loading";
+export const ADD_LEADERS="add_leaders";
+export const LEADERS_FAILED="leaders_failed";

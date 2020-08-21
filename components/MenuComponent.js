@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import { View, FlatList } from 'react-native';
 import { ListItem } from 'react-native-elements';
-import { DISHES } from '../shared/dishes';
+import {  fetchDishes } from '../redux/ActionCreator';
+import {connect} from 'react-redux';
+import { Loading } from './LoadingComponent';
+
+
+const mapStateToProps= state=>{
+    return{
+       dishes:state.dishes
+    }
+};
 
 
 class Menu extends Component {
@@ -9,7 +18,7 @@ class Menu extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dishes: DISHES
+           
         };
     }
 
@@ -33,18 +42,30 @@ class Menu extends Component {
             );
         };
        
+        if(this.props.dishes.isLoading){
+            return (
+<Loading/>
+            );
+        }else if(this.props.dishes.errMess !=null){
+            return (
+<Text>{this.props.dishes.errMess}</Text>
+            );
+        }else{
+
+        
         return (
             <FlatList
-                data={this.state.dishes}
+                data={this.props.dishes.dishes}
                 renderItem={renderMenuItem}
                 keyExtractor={item => item.id.toString()}
 
             />
         );
+        }
 
     };
 
 
 }
 
-export default Menu;
+export default connect(mapStateToProps)(Menu);
