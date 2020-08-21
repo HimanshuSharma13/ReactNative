@@ -9,3 +9,5 @@ export const PROMOS_FAILED="promos_failed";
 export const LEADERS_LOADING="leaders_loading";
 export const ADD_LEADERS="add_leaders";
 export const LEADERS_FAILED="leaders_failed";
+export const PUSH_FAVORITE="push_favorite";
+export const ADD_FAVORITE="add_favorite";

@@ -1,7 +1,7 @@
 import * as ActionTypes from './ActionTypes';
-import {BaseUrl} from '../shared/baseUrl';
+import { BaseUrl } from '../shared/baseUrl';
 import { comments } from './comments';
-import {DISHES} from '../shared/dishes';
+import { DISHES } from '../shared/dishes';
 
 
 // export const fetchComments=()=>(dispatch)=>{
@@ -23,25 +23,38 @@ import {DISHES} from '../shared/dishes';
 //     .then(comments=>dispatch(addComments(comments)))
 // }
 
-export const fetchDishes=()=>(dispatch)=>{
-dispatch(dishloading(true));
-setTimeout(() => {
-    dispatch(addDishes(DISHES))
-}, 6000);
+export const fetchDishes = () => (dispatch) => {
+    dispatch(dishloading(true));
+    setTimeout(() => {
+        dispatch(addDishes(DISHES))
+    }, 6000);
 }
 
-const dishloading=()=>({
-    type:ActionTypes.DISHES_LOADING
+const dishloading = () => ({
+    type: ActionTypes.DISHES_LOADING
 });
 
-const addDishes=(dishes)=>({
-    type:ActionTypes.ADD_DISHES,
-    payload:dishes
+const addDishes = (dishes) => ({
+    type: ActionTypes.ADD_DISHES,
+    payload: dishes
 
 });
 
-const dishesFailed=(errMess)=>({
-    type:ActionTypes.DISHES_FAILED,
-    payload:errMess
+const dishesFailed = (errMess) => ({
+    type: ActionTypes.DISHES_FAILED,
+    payload: errMess
 
+});
+
+
+export const pushFavorite = (dishId) => (dispatch) => {
+    console.log('------------------dishID-------->'+dishId);
+    setTimeout(() => {
+        dispatch(addFavorite(dishId))
+    }, 2000);
+};
+
+const addFavorite = (dishID) => ({
+    type: ActionTypes.ADD_FAVORITE,
+    payload: dishID
 });
