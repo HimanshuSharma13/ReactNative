@@ -11,6 +11,7 @@ import Home from './HomeComponent';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {  fetchDishes } from '../redux/ActionCreator';
 import {connect} from 'react-redux';
+import Reservation from './ReservationComponent';
 
 
 
@@ -49,6 +50,7 @@ const CustomDrawerContentComponent = (props) => (
 
 const MenuNavigator = createStackNavigator();
 const HomeNavigator = createStackNavigator();
+const ReserveNavigator = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 
@@ -83,6 +85,42 @@ class MainNavigator extends React.Component {
                 <MenuNavigator.Screen name="DishDetail" component={DishDetail}
                 />
             </MenuNavigator.Navigator>
+
+
+        );
+    }
+}
+
+
+class ReserveStackNavigator extends React.Component {
+    render() {
+        return (
+
+            <ReserveNavigator.Navigator  >
+                <ReserveNavigator.Screen name="Reserve Table" component={Reservation}
+                    options={({ navigation }) => ({
+                        headerStyle: {
+                            backgroundColor: '#3f51b5'
+                        },
+                        headerTitleStyle: {
+                            color: '#fff'
+                        },
+                        headerTintColor: {
+                            color: '#fff'
+                        },
+                        headerLeft: ({ }) => (
+                            <View>
+                                <Icon
+                                    onPress={() => navigation.toggleDrawer()}
+                                    name="md-menu"
+                                    size={40}
+                                    color='#fff'
+                                />
+                            </View>
+                        )
+                    })} />
+                
+            </ReserveNavigator.Navigator>
 
 
         );
@@ -177,6 +215,15 @@ componentDidMount(){
                                 drawerIcon: ({ tintColor }) => <Icon size={23} name='md-contacts' type="font-awesome" color={tintColor}></Icon>
                             }
                         }
+                    />
+                    <Drawer.Screen name="Reservation" component={ReserveStackNavigator}
+                    options={
+                        
+                     {
+                        
+                         drawerIcon:({tintColor})=><Icon size={23} name='md-book' type="font-awsome" color={tintColor}></Icon>
+                     }   
+                    }
                     />
 
 
