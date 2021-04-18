@@ -1,6 +1,6 @@
 # ReactNative
 
-## Implementing different React Native Functionalities##
+## Implementing different React Native Features & Functionalities ##
 
 Redux is an open-source JavaScript library for managing application state. It is commonly used in React.
 
